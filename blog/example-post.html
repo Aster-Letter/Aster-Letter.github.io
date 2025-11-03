@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="欢迎来到我的博客 - 第一篇文章">
+    <title>欢迎来到我的博客 - 星笺</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 博客文章特定样式 */
+        .blog-article {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-article h1 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            color: #64748b;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .blog-article h2 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-article h3 {
+            font-size: 1.4rem;
+            color: var(--dark-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-article p {
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .blog-article ul, .blog-article ol {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .blog-article li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-article code {
+            background: var(--light-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e91e63;
+        }
+
+        .blog-article pre {
+            background: var(--dark-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .blog-article pre code {
+            background: none;
+            color: white;
+            padding: 0;
+        }
+
+        .blog-article blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .blog-article {
+                margin: 80px 20px 30px;
+                padding: 20px;
+            }
+
+            .blog-article h1 {
+                font-size: 2rem;
+            }
+
+            .blog-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">星笺</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">首页</a></li>
+                <li><a href="../index.html#about">关于</a></li>
+                <li><a href="../index.html#blog">博客</a></li>
+                <li><a href="../index.html#projects">项目</a></li>
+                <li><a href="../index.html#contact">联系</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 文章内容 -->
+    <article class="blog-article">
+        <h1>欢迎来到我的博客</h1>
+        
+        <div class="blog-meta">
+            <span>📅 发布日期：2024年1月1日</span>
+            <span>👤 作者：星笺</span>
+            <span>⏱️ 阅读时间：5分钟</span>
+        </div>
+
+        <p>欢迎来到我的个人博客！这是我的第一篇博客文章。在这里，我将分享我的学习心得、生活感悟和有趣的项目。</p>
+
+        <h2>为什么要写博客？</h2>
+
+        <p>写博客对我来说有很多好处：</p>
+
+        <ul>
+            <li><strong>记录成长：</strong>通过写作记录自己的学习历程和思考过程</li>
+            <li><strong>整理思路：</strong>将零散的知识系统化，加深理解</li>
+            <li><strong>分享经验：</strong>帮助遇到相同问题的人</li>
+            <li><strong>结识朋友：</strong>通过博客认识志同道合的朋友</li>
+        </ul>
+
+        <h2>博客内容方向</h2>
+
+        <p>我计划在博客中分享以下内容：</p>
+
+        <h3>1. 技术学习</h3>
+        <p>记录我在编程、Web 开发等技术领域的学习笔记和心得体会。包括但不限于：</p>
+        <ul>
+            <li>HTML、CSS、JavaScript 基础知识</li>
+            <li>前端框架（React、Vue 等）</li>
+            <li>后端开发技术</li>
+            <li>工具和效率提升</li>
+        </ul>
+
+        <h3>2. 项目分享</h3>
+        <p>分享我做过的项目，包括项目背景、技术选型、遇到的问题和解决方案。</p>
+
+        <h3>3. 生活随笔</h3>
+        <p>记录生活中的点滴，分享我的想法、阅读、旅行等经历。</p>
+
+        <h2>博客写作示例</h2>
+
+        <p>这里展示一些常用的写作元素：</p>
+
+        <h3>引用</h3>
+        <blockquote>
+            "纸上得来终觉浅，绝知此事要躬行。" —— 陆游
+        </blockquote>
+
+        <h3>代码示例</h3>
+        <p>这是一个简单的 JavaScript 代码示例：</p>
+
+        <pre><code>// 欢迎信息函数
+function welcome(name) {
+    console.log(`欢迎来到 ${name} 的博客！`);
+}
+
+welcome('星笺');
+</code></pre>
+
+        <h3>行内代码</h3>
+        <p>你可以使用 <code>console.log()</code> 来输出信息到控制台。</p>
+
+        <h2>如何创建博客文章</h2>
+
+        <p>如果你想创建自己的博客文章，可以按照以下步骤：</p>
+
+        <ol>
+            <li>复制这个文件（<code>example-post.html</code>）</li>
+            <li>重命名为你的文章名称（使用英文，如 <code>my-first-article.html</code>）</li>
+            <li>修改标题、日期和内容</li>
+            <li>在主页的博客区块添加文章卡片，链接到新文章</li>
+            <li>提交并推送到 GitHub</li>
+        </ol>
+
+        <h2>下一步计划</h2>
+
+        <p>接下来我计划：</p>
+        <ul>
+            <li>✅ 完成网站基础结构</li>
+            <li>✅ 发布第一篇博客文章</li>
+            <li>📝 分享 GitHub Pages 搭建教程</li>
+            <li>📝 记录学习心得</li>
+            <li>🎨 持续优化网站设计</li>
+        </ul>
+
+        <h2>结语</h2>
+
+        <p>感谢你阅读我的第一篇博客文章！我会持续更新内容，希望我的分享对你有所帮助。</p>
+
+        <p>如果你有任何建议或想法，欢迎通过联系页面与我交流！</p>
+
+        <a href="../index.html#blog" class="back-link">← 返回博客列表</a>
+    </article>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 星笺 | Aster Letter. 保留所有权利。</p>
+            <p>使用 ❤️ 和 GitHub Pages 构建</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
