@@ -2,7 +2,7 @@
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-if (hamburger) {
+if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         
@@ -84,14 +84,8 @@ if (yearElement) {
 }
 
 // ===== 平滑加载效果 =====
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.3s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
+// 页面加载时已经可见，无需额外处理
+// 如需淡入效果，应在 CSS 中设置初始状态
 
 // ===== 控制台欢迎信息 =====
 console.log('%c欢迎来到星笺的个人网站！', 'color: #6366f1; font-size: 20px; font-weight: bold;');
