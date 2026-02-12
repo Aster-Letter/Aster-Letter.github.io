@@ -108,3 +108,48 @@
 - 首页已形成“可浏览、可导航、可扩展”的基础版本。
 - 视觉风格已从默认文档页升级为 Notion 风格 + 轻量星空背景。
 - 代码静态检查通过，核心文件无新增报错。
+
+## 8) Jekyll 架构重构（模板化）
+
+### 目标
+将单页静态原型升级为可在 GitHub Pages 上持续维护的 Jekyll 结构。
+
+### 已完成
+- 新增站点配置文件 `_config.yml`，设置站点标题、描述、URL、语言与插件（`jekyll-seo-tag`）。
+- 新增布局 `_layouts/default.html`，承载全站 HTML 骨架、SEO 注入和统一脚本加载。
+- 新增组件目录 `_includes/`：
+  - `header.html`（顶部导航）
+  - `footer.html`（站点页脚）
+- 将首页改为内容页模式（Front Matter + 内容区），由 `layout: default` 渲染。
+
+### 影响文件
+- `_config.yml`
+- `_layouts/default.html`
+- `_includes/header.html`
+- `_includes/footer.html`
+- `index.html`
+
+## 9) 多页面内容化（本轮推进）
+
+### 目标
+将首页中的 Archive / Projects / About 拆分为独立页面，形成可持续扩展的信息架构。
+
+### 已完成
+- 新增独立页面：
+  - `archive.md`（`/archive/`）
+  - `projects.md`（`/projects/`）
+  - `about.md`（`/about/`）
+- 导航链接从首页锚点切换为页面路由（Home / Archive / Projects / About）。
+- 首页三张内容卡片增加入口链接，分别跳转到对应独立页面。
+- 新增页面级样式与可复用元素：
+  - `.page-header`
+  - `.section-link`
+  - `.site-footer`
+
+### 影响文件
+- `archive.md`
+- `projects.md`
+- `about.md`
+- `_includes/header.html`
+- `index.html`
+- `css/style.css`

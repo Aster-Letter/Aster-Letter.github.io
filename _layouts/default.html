@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  {% seo %}
+</head>
+<body>
+  <div id="particles-js"></div>
+  {% include header.html %}
+
+  {{ content }}
+
+  {% include footer.html %}
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="{{ '/js/particles-config.js' | relative_url }}"></script>
+  <script src="{{ '/js/script.js' | relative_url }}"></script>
+</body>
+</html>

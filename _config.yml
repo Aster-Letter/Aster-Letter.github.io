@@ -1,0 +1,7 @@
+title: Aster Letter
+description: Archiving the sparks of thoughts.
+url: "https://Aster-Letter.github.io"
+lang: zh-CN
+theme: jekyll-theme-primer
+plugins:
+  - jekyll-seo-tag

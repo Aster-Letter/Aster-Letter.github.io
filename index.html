@@ -1,53 +1,33 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="星笺的个人网站 - Personal Website">
-    <title>星笺 | Aster Letter</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div id="particles-js"></div>
-  <nav class="navbar glass-panel">
-    <div class="container navbar-inner">
-      <a class="logo" href="#home">Aster Letter</a>
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#archive">Archive</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-      </div>
-    </div>
-  </nav>
+---
+layout: default
+title: Home
+description: Archiving the sparks of thoughts.
+---
 
-  <header class="hero" id="home">
-    <div class="container hero-content">
-      <h1>Aster Letter</h1>
-      <p>Archiving the sparks of thoughts.</p>
-      <div class="scroll-down">↓ Scroll</div>
-    </div>
-  </header>
+<header class="hero" id="home">
+  <div class="container hero-content">
+    <h1>Aster Letter</h1>
+    <p>Archiving the sparks of thoughts.</p>
+    <div class="scroll-down">↓ Scroll</div>
+  </div>
+</header>
 
-  <main class="container page-content">
-    <section id="archive" class="content-section glass-panel">
-      <h2>Archive</h2>
-      <p>Notes, blog drafts, and records of experiments are gathered here as a growing personal knowledge base.</p>
-    </section>
+<main class="container page-content">
+  <section id="archive" class="content-section glass-panel">
+    <h2>Archive</h2>
+    <p>Notes, blog drafts, and records of experiments are gathered here as a growing personal knowledge base.</p>
+    <a class="section-link" href="{{ '/archive/' | relative_url }}">Open Archive →</a>
+  </section>
 
-    <section id="projects" class="content-section glass-panel">
-      <h2>Projects</h2>
-      <p>Selected works across writing, code, and coursework, focusing on ideas that can be iterated and revisited.</p>
-    </section>
+  <section id="projects" class="content-section glass-panel">
+    <h2>Projects</h2>
+    <p>Selected works across writing, code, and coursework, focusing on ideas that can be iterated and revisited.</p>
+    <a class="section-link" href="{{ '/projects/' | relative_url }}">View Projects →</a>
+  </section>
 
-    <section id="about" class="content-section glass-panel">
-      <h2>About</h2>
-      <p>Aster Letter is a quiet digital desk for archiving sparks of thoughts and shaping them into durable artifacts.</p>
-    </section>
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="js/particles-config.js"></script>
-  <script src="js/script.js"></script>
-</body>
-</html>
+  <section id="about" class="content-section glass-panel">
+    <h2>About</h2>
+    <p>Aster Letter is a quiet digital desk for archiving sparks of thoughts and shaping them into durable artifacts.</p>
+    <a class="section-link" href="{{ '/about/' | relative_url }}">Read About →</a>
+  </section>
+</main>
