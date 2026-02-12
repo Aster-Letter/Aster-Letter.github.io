@@ -2,8 +2,13 @@
 // ===== 平滑滚动 =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const targetSelector = this.getAttribute('href');
+        if (!targetSelector || targetSelector === '#') {
+            return;
+        }
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(targetSelector);
         if (target) {
             const offsetTop = target.offsetTop - 70; // 减去导航栏高度
             window.scrollTo({
@@ -19,6 +24,10 @@ let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
+    if (!navbar) {
+        return;
+    }
+
     const currentScroll = window.pageYOffset;
     
     // 添加阴影效果
