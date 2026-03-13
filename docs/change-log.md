@@ -1,155 +1,107 @@
-# Aster Letter 变更日志
+# Aster Letter 迭代日志
 
-- 项目：Aster-Letter.github.io
-- 记录日期：2026-02-13
-- 范围：视觉骨架、粒子背景、导航与首屏、内容区与稳定性修复
+> 记录方式：按轮次编排（适配高频迭代）。
 
-## 1) 全局视觉骨架
+## Round 01（2026-02-13）视觉骨架初始化
 
-### 目标
-建立 Notion 风格排版基线，并融合轻量毛玻璃质感。
+- 目标：建立 Notion 风格排版基线与毛玻璃 UI 基础。
+- 主要改动：
+  - 在 `css/style.css` 建立全局变量、reset、`body` 排版基线。
+  - 新增 `#particles-js` 背景容器与 `.glass-panel`、`.container` 工具类。
+  - 在首页引入 `particles.js` 并完成初版初始化。
+- 影响文件：`css/style.css`、`index.html`、`js/particles-config.js`。
 
-### 已完成
-- 在 `:root` 中新增核心色彩变量：`--bg-color`、`--card-bg`、`--text-primary`、`--text-secondary`、`--accent-color`。
-- 增加全局 reset（`box-sizing`、`html/body` 默认边距归零）。
-- `body` 启用现代无衬线字体栈与字体平滑渲染。
-- 新增通用工具类：`.glass-panel`、`.container`。
+## Round 02（2026-02-13）交互细化与首页结构
 
-### 影响文件
-- `css/style.css`
+- 目标：将默认文档页升级为可用首页。
+- 主要改动：
+  - 粒子参数改为更轻的“星空感”配置（低速、低饱和、轻连线）。
+  - 新增固定毛玻璃导航栏、Hero 首屏与滚动提示。
+  - 新增 `Archive / Projects / About` 三个区块与卡片化样式。
+  - 修复 `js/script.js` 的 `.navbar` 空引用风险与锚点边界问题。
+  - 增加移动端断点适配与锚点偏移，改善窄屏阅读体验。
+- 影响文件：`index.html`、`css/style.css`、`js/particles-config.js`、`js/script.js`。
 
-## 2) 粒子背景系统
+## Round 03（2026-02-13）Jekyll 模板化重构
 
-### 目标
-引入底层动态背景，风格从“重分子连线”调优为“细腻星空”。
+- 目标：将单页原型转为可部署、可维护的 Jekyll 架构。
+- 主要改动：
+  - 新建 `_config.yml` 并配置站点信息与 `jekyll-seo-tag`。
+  - 新建 `_layouts/default.html`，承载全站骨架与统一资源加载。
+  - 新建 `_includes/header.html` 与 `_includes/footer.html`。
+  - 首页改写为 Front Matter + 内容页结构（`layout: default`）。
+- 影响文件：`_config.yml`、`_layouts/default.html`、`_includes/header.html`、`_includes/footer.html`、`index.html`。
 
-### 已完成
-- 在页面主体开头注入粒子容器：`#particles-js`。
-- 引入 `particles.js` CDN。
-- 将粒子初始化从内联脚本拆分为独立文件 `js/particles-config.js`。
-- 星空参数重构：
-  - 粒子数量：60
-  - 粒子颜色：`#8c8c8c`
-  - 透明度：`0.5` 且 `random: true`
-  - 尺寸：`2` 且 `random: true`
-  - 速度：`1`
-  - 连线颜色：`#aab2b8`
-  - 连线透明度：`0.2`
-  - 交互：hover `grab`、click `push`
-  - Retina：`true`
-- 保证层级与交互安全：`#particles-js` 处于底层并禁用点击拦截（`pointer-events: none`）。
+## Round 04（2026-02-13）多页面内容化
 
-### 影响文件
-- `index.html`
-- `css/style.css`
-- `js/particles-config.js`
+- 目标：拆分首页锚点内容为独立页面，提升可扩展性。
+- 主要改动：
+  - 新增 `archive.md`、`projects.md`、`about.md`。
+  - 导航链接切换为页面路由。
+  - 首页改为入口卡片，链接至对应独立页面。
+  - 新增页面头部、入口链接与页脚样式。
+- 影响文件：`archive.md`、`projects.md`、`about.md`、`_includes/header.html`、`index.html`、`css/style.css`。
 
-## 3) 核心 UI：导航与首屏
+## Round 05（2026-02-21）文章系统与迁移脚本 V1
 
-### 目标
-补齐网站核心信息架构入口，形成可用首页。
+- 目标：建立 Jekyll 文章渲染链路并接入 Obsidian 批量迁移。
+- 主要改动：
+  - 新建 `_posts/` 目录。
+  - 新建 `_layouts/post.html`，统一文章页样式与元信息展示。
+  - 新建 `scripts/obsidian_to_jekyll.py`：扫描源目录、生成 `YYYY-MM-DD-<slug>.md`、替换 `![[image.png]]`、注入 Front Matter。
+- 影响文件：`_posts/`、`_layouts/post.html`、`scripts/obsidian_to_jekyll.py`。
 
-### 已完成
-- 新增固定顶部导航栏 `.navbar`：
-  - 毛玻璃效果（blur + 半透明白底）
-  - 左侧 Logo：`Aster Letter`
-  - 右侧导航：Home / Archive / Projects / About
-- 新增首屏 `header.hero`：
-  - 主标题：`Aster Letter`
-  - 副标题：`Archiving the sparks of thoughts.`
-  - 下滑提示：`↓ Scroll`
-- 新增主内容容器 `main` 与三个锚点区块：`#archive`、`#projects`、`#about`。
+## Round 06（2026-02-21）图片通道增强 + Pixiv 渲染
 
-### 影响文件
-- `index.html`
-- `css/style.css`
+- 目标：迁移流程同时支持本地图片与 Pixiv 引用，并保持 Notion 风格展示。
+- 主要改动：
+  - 增强 `scripts/obsidian_to_jekyll.py`：
+    - 新增本地图片复制流程（`--image-source` -> `--image-target`）。
+    - 新增可选压缩流程（默认尝试压缩；Pillow 缺失时自动降级复制）。
+    - 新增 Obsidian/Pixiv 转换规则：
+      - `![[pixiv:123456|可选标题]]` -> Pixiv embed HTML。
+      - `![alt](https://www.pixiv.net/artworks/123456)` -> Pixiv embed HTML。
+    - 本地图片文件名标准化，降低 URL 与系统差异风险。
+  - 在 `_layouts/post.html` 注入 Pixiv 官方渲染脚本 `https://embed.pixiv.net/display.js`。
+  - 在 `css/style.css` 新增文章媒体样式（`img`、`.notion-media`、`.notion-pixiv`）。
+- 本轮验证：
+  - 使用 `test/随笔` + `test/assets` 完成端到端迁移测试，成功生成 7 篇 `_posts` 文章。
+  - 成功复制图片到 `assets/images/`。
+  - 函数级验证通过：Pixiv 语法、本地图片语法、Pixiv URL 语法均可正确转换。
+- 结论：
+  - 推荐优先使用 Pixiv 作品页嵌入，不建议直接热链原图。
+  - 推荐统一引用格式：`![[pixiv:作品ID|可选说明]]` 与 `![[本地图片文件名.png]]`。
+- 影响文件：`scripts/obsidian_to_jekyll.py`、`_layouts/post.html`、`css/style.css`、`docs/change-log.md`。
 
-## 4) 内容区落地（MVP）
+## Round 07（2026-02-21）迁移脚本优化 + GUI 工具
 
-### 目标
-在核心布局下填入最小可阅读内容，避免空壳页面。
+- 目标：提升迁移脚本可维护性与可操作性，提供图形化入口。
+- 主要改动：
+  - 重构 `scripts/obsidian_to_jekyll.py` 为“可复用内核 + CLI”结构：
+    - 新增 `ConversionOptions` 与 `ConversionStats` 数据结构。
+    - 新增 `run_conversion()` 统一执行入口，便于 CLI 与 GUI 共用。
+    - 新增封面自动提取：从正文首个本地图或 Pixiv 嵌入推断 `cover` 与 `cover_type`。
+    - 新增统计输出：转换篇数、图片处理数量、Pixiv 嵌入数、封面提取数、缺失图片告警。
+  - 新增 GUI：`scripts/obsidian_to_jekyll_gui.py`（Tkinter）
+    - 可视化设置源目录、目标目录、图片目录。
+    - 勾选控制压缩与封面提取。
+    - 实时日志窗口与完成摘要提示。
+  - 继续保持 Pixiv 嵌入与本地图片压缩逻辑兼容。
+- 本轮验证：
+  - `py_compile` 检查通过（CLI 与 GUI 脚本）。
+  - 使用 `test/随笔` + `test/assets` 再次完成端到端迁移测试，成功转换 7 篇。
+  - 验证到至少 1 篇文章正确写入 `cover_type` 字段。
+- 影响文件：`scripts/obsidian_to_jekyll.py`、`scripts/obsidian_to_jekyll_gui.py`、`docs/change-log.md`。
 
-### 已完成
-- 为 Archive / Projects / About 三个区块补充说明性文案。
-- 新增内容区样式：
-  - `.page-content`（垂直节奏与间距）
-  - `.content-section`（卡片化、圆角、半透明背景）
-  - 标题与正文层级样式。
+## Round 08（2026-02-21）本地测试隔离与提交流程固化
 
-### 影响文件
-- `index.html`
-- `css/style.css`
-
-## 5) 稳定性与体验修复
-
-### 已完成
-- 修复 `js/script.js` 中潜在空引用风险：当 `.navbar` 不存在时中止滚动阴影逻辑，避免运行时报错。
-- 修复锚点点击边界：过滤 `href="#"` 场景，避免无效选择器导致异常。
-- 新增锚点滚动偏移（`scroll-margin-top`），减少固定导航遮挡目标区块。
-- 新增移动端优化（`@media (max-width: 768px)`）：
-  - 导航自动换行与间距收敛
-  - Hero 文案与布局适配
-  - 内容卡片内边距与页面节奏优化
-
-### 影响文件
-- `js/script.js`
-- `css/style.css`
-
-## 6) 脚本加载顺序（当前）
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script src="js/particles-config.js"></script>
-<script src="js/script.js"></script>
-```
-
-## 7) 当前状态结论
-
-- 首页已形成“可浏览、可导航、可扩展”的基础版本。
-- 视觉风格已从默认文档页升级为 Notion 风格 + 轻量星空背景。
-- 代码静态检查通过，核心文件无新增报错。
-
-## 8) Jekyll 架构重构（模板化）
-
-### 目标
-将单页静态原型升级为可在 GitHub Pages 上持续维护的 Jekyll 结构。
-
-### 已完成
-- 新增站点配置文件 `_config.yml`，设置站点标题、描述、URL、语言与插件（`jekyll-seo-tag`）。
-- 新增布局 `_layouts/default.html`，承载全站 HTML 骨架、SEO 注入和统一脚本加载。
-- 新增组件目录 `_includes/`：
-  - `header.html`（顶部导航）
-  - `footer.html`（站点页脚）
-- 将首页改为内容页模式（Front Matter + 内容区），由 `layout: default` 渲染。
-
-### 影响文件
-- `_config.yml`
-- `_layouts/default.html`
-- `_includes/header.html`
-- `_includes/footer.html`
-- `index.html`
-
-## 9) 多页面内容化（本轮推进）
-
-### 目标
-将首页中的 Archive / Projects / About 拆分为独立页面，形成可持续扩展的信息架构。
-
-### 已完成
-- 新增独立页面：
-  - `archive.md`（`/archive/`）
-  - `projects.md`（`/projects/`）
-  - `about.md`（`/about/`）
-- 导航链接从首页锚点切换为页面路由（Home / Archive / Projects / About）。
-- 首页三张内容卡片增加入口链接，分别跳转到对应独立页面。
-- 新增页面级样式与可复用元素：
-  - `.page-header`
-  - `.section-link`
-  - `.site-footer`
-
-### 影响文件
-- `archive.md`
-- `projects.md`
-- `about.md`
-- `_includes/header.html`
-- `index.html`
-- `css/style.css`
+- 目标：隔离本地测试资产，避免误提交，并补齐使用说明。
+- 主要改动：
+  - 将主仓库中的 `test/` 与 `scripts/` 迁移至 `Repository/Aster-Letter.github.io-LocalTest/`。
+  - 在主仓库新增 `.gitignore`，忽略 `/test/` 与 `/scripts/`，防止未来误创建后被提交。
+  - 在 `Aster-Letter.github.io-LocalTest/scripts/` 新增文档 `README.md`，说明 CLI/GUI 调用方式、参数与推荐引用格式。
+  - 新增简洁同步脚本 `git_sync_main_repo.ps1`，用于固化主仓库 add/commit/push 流程。
+- 本轮验证：
+  - 从 LocalTest 路径执行迁移脚本，成功转换 7 篇文章并同步图片到主仓库。
+  - 对迁移后的 CLI 与 GUI 脚本执行 `py_compile`，检查通过。
+- 影响文件：`docs/change-log.md`、`.gitignore`（主仓库）、`Aster-Letter.github.io-LocalTest/scripts/README.md`、`Aster-Letter.github.io-LocalTest/scripts/git_sync_main_repo.ps1`。

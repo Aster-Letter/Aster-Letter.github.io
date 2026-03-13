@@ -240,7 +240,7 @@ mkdir images
 
 ```css
 :root {
-    --primary-color: #6366f1;    /* 主色调 */
+    --primary-color: #6a6df8;    /* 主色调 */
     --secondary-color: #8b5cf6;  /* 辅助色 */
     --dark-color: #1e293b;       /* 深色 */
     --light-color: #f8fafc;      /* 浅色 */

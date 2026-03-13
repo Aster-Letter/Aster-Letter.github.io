@@ -200,6 +200,39 @@ body {
 	margin: 0;
 }
 
+.post-content {
+	overflow-wrap: break-word;
+}
+
+.post-content img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 16px auto;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+	background: var(--card-bg);
+}
+
+.notion-media {
+	margin: 18px auto;
+	padding: 8px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+	background: rgba(255, 255, 255, 0.72);
+}
+
+.notion-media figcaption {
+	margin-top: 8px;
+	color: var(--text-secondary);
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.notion-pixiv .pixiv-embed {
+	margin: 0;
+}
+
 #home,
 #archive,
 #projects,
