@@ -1,0 +1,7 @@
+<section class="content-panel glass-panel reveal-on-scroll{% if include.extra_class %} {{ include.extra_class }}{% endif %}"{% if include.id %} id="{{ include.id }}"{% endif %}>
+  <h2>{{ include.title }}</h2>
+  <p>{{ include.body }}</p>
+  {% if include.href and include.link_text %}
+  <a class="section-link" href="{{ include.href | relative_url }}">{{ include.link_text }}</a>
+  {% endif %}
+</section>

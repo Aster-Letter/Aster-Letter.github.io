@@ -5,7 +5,13 @@
 	--text-primary: #373530;
 	--text-secondary: #787774;
 	--accent-color: #2e2e2e;
-	--font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+	--font-sans: "Aptos", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+	--surface-glass: rgba(255, 255, 255, 0.66);
+	--surface-strong: rgba(255, 255, 255, 0.8);
+	--surface-border: rgba(255, 255, 255, 0.38);
+	--shadow-soft: 0 20px 45px rgba(55, 53, 48, 0.08);
+	--shadow-focus: 0 18px 36px rgba(55, 53, 48, 0.14);
+	--navbar-height: 72px;
 }
 
 *,
@@ -23,10 +29,17 @@ body {
 body {
 	background: var(--bg-color);
 	color: var(--text-primary);
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+	font-family: var(--font-sans);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	line-height: 1.6;
+	background-image:
+		radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 32%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(247, 243, 248, 0.94));
+}
+
+a {
+	color: inherit;
 }
 
 #particles-js {
@@ -39,11 +52,55 @@ body {
 	pointer-events: none;
 }
 
+#particles-js canvas {
+	pointer-events: none;
+}
+
+.site-shell {
+	min-height: 100vh;
+	position: relative;
+}
+
+.site-layer {
+	position: relative;
+	z-index: 0;
+	isolation: isolate;
+}
+
+.site-main {
+	position: relative;
+	z-index: 1;
+}
+
 .glass-panel {
 	-webkit-backdrop-filter: blur(12px);
 	backdrop-filter: blur(12px);
-	background: rgba(255, 255, 255, 0.6);
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	background: var(--surface-glass);
+	border: 1px solid var(--surface-border);
+	box-shadow: var(--shadow-soft);
+	border-radius: 18px;
+	overflow: hidden;
+}
+
+.surface-card {
+	padding: 24px;
+	background: var(--surface-strong);
+}
+
+.page-header-panel,
+.content-panel,
+.content-section {
+	padding: 24px;
+	background: var(--surface-strong);
+}
+
+.section-stack {
+	display: grid;
+	gap: 18px;
+}
+
+.page-stack > * + * {
+	margin-top: 0;
 }
 
 .container {
@@ -60,16 +117,23 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 20;
-	background: rgba(255, 255, 255, 0.65);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+	z-index: 100;
+	background: rgba(255, 255, 255, 0.58);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	transition: background 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+}
+
+.navbar.scrolled {
+	background: rgba(255, 255, 255, 0.78);
+	border-bottom-color: var(--surface-border);
+	box-shadow: 0 14px 30px rgba(55, 53, 48, 0.08);
 }
 
 .navbar-inner {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	min-height: 64px;
+	min-height: var(--navbar-height);
 }
 
 .logo {
@@ -98,12 +162,20 @@ body {
 	color: var(--text-primary);
 }
 
+.nav-links a:focus-visible,
+.section-link:focus-visible {
+	outline: 2px solid var(--accent-color);
+	outline-offset: 3px;
+	border-radius: 999px;
+}
+
 .hero {
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding-top: 64px;
+	padding-top: calc(var(--navbar-height) + 20px);
+	padding-bottom: 40px;
 }
 
 .hero-content {
@@ -113,6 +185,25 @@ body {
 	justify-content: center;
 	text-align: center;
 	gap: 12px;
+}
+
+.hero-panel {
+	width: min(100%, 720px);
+	padding: 40px 36px;
+	text-align: center;
+}
+
+.hero-actions {
+	margin-top: 18px;
+}
+
+.eyebrow {
+	margin: 0;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--text-secondary);
 }
 
 .hero h1 {
@@ -128,10 +219,10 @@ body {
 	color: var(--text-secondary);
 }
 
+
 .scroll-down {
-	margin-top: 12px;
 	font-size: 0.95rem;
-	color: var(--text-secondary);
+	color: var(--text-primary);
 }
 
 .page-content {
@@ -141,12 +232,14 @@ body {
 	gap: 18px;
 }
 
-.content-section {
-	padding: 24px;
-	border-radius: 14px;
-	background: rgba(255, 255, 255, 0.72);
+.page-header {
+	padding-top: calc(var(--navbar-height) + 38px);
+	padding-bottom: 10px;
 }
 
+.page-header h1,
+.page-header-panel h1,
+.content-panel h2,
 .content-section h2 {
 	margin: 0 0 8px;
 	font-size: 1.35rem;
@@ -154,9 +247,24 @@ body {
 	letter-spacing: -0.01em;
 }
 
+.page-header h1,
+.page-header-panel h1 {
+	font-size: clamp(2rem, 5vw, 3rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+
+.page-header p,
+.page-header-panel p,
+.content-panel p,
 .content-section p {
 	margin: 0;
 	color: var(--text-secondary);
+}
+
+.content-panel > :last-child,
+.content-section > :last-child {
+	margin-bottom: 0;
 }
 
 .section-link {
@@ -165,27 +273,12 @@ body {
 	color: var(--accent-color);
 	font-weight: 600;
 	text-decoration: none;
+	transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .section-link:hover {
+	transform: translateY(-1px);
 	text-decoration: underline;
-}
-
-.page-header {
-	padding-top: 110px;
-	padding-bottom: 10px;
-}
-
-.page-header h1 {
-	margin: 0;
-	font-size: clamp(2rem, 5vw, 3rem);
-	font-weight: 700;
-	letter-spacing: -0.02em;
-}
-
-.page-header p {
-	margin: 8px 0 0;
-	color: var(--text-secondary);
 }
 
 .site-footer {
@@ -194,6 +287,8 @@ body {
 	color: var(--text-secondary);
 	font-size: 0.9rem;
 	text-align: center;
+	position: relative;
+	z-index: 1;
 }
 
 .site-footer p {
@@ -219,7 +314,7 @@ body {
 	padding: 8px;
 	border-radius: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.45);
-	background: rgba(255, 255, 255, 0.72);
+	background: var(--surface-strong);
 }
 
 .notion-media figcaption {
@@ -237,7 +332,18 @@ body {
 #archive,
 #projects,
 #about {
-	scroll-margin-top: 84px;
+	scroll-margin-top: calc(var(--navbar-height) + 12px);
+}
+
+.reveal-on-scroll {
+	opacity: 0;
+	transform: translateY(18px);
+	transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal-on-scroll.is-visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 @media (max-width: 768px) {
@@ -252,6 +358,10 @@ body {
 		padding-top: 8px;
 		padding-bottom: 8px;
 		row-gap: 8px;
+	}
+
+	:root {
+		--navbar-height: 64px;
 	}
 
 	.nav-links {
@@ -270,7 +380,12 @@ body {
 	}
 
 	.hero-content {
-		align-items: flex-start;
+		align-items: stretch;
+		text-align: left;
+	}
+
+	.hero-panel {
+		padding: 28px 22px;
 		text-align: left;
 	}
 
@@ -285,6 +400,9 @@ body {
 	.page-content {
 		padding-top: 20px;
 		padding-bottom: 48px;
+	}
+
+	.section-stack {
 		gap: 14px;
 	}
 
@@ -292,6 +410,8 @@ body {
 		padding-top: 96px;
 	}
 
+	.page-header-panel,
+	.content-panel,
 	.content-section {
 		padding: 18px;
 		border-radius: 12px;

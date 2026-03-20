@@ -2,32 +2,24 @@
 layout: default
 title: Home
 description: Archiving the sparks of thoughts.
+permalink: /
 ---
 
 <header class="hero" id="home">
   <div class="container hero-content">
-    <h1>Aster Letter</h1>
-    <p>Archiving the sparks of thoughts.</p>
-    <div class="scroll-down">↓ Scroll</div>
+    <div class="hero-panel glass-panel surface-card reveal-on-scroll">
+      <p class="eyebrow">Personal Archive</p>
+      <h1>Aster Letter</h1>
+      <p>Archiving the sparks of thoughts.</p>
+      <div class="hero-actions">
+        <a class="scroll-down section-link" href="#archive">Scroll to Archive</a>
+      </div>
+    </div>
   </div>
 </header>
 
-<main class="container page-content">
-  <section id="archive" class="content-section glass-panel">
-    <h2>Archive</h2>
-    <p>Notes, blog drafts, and records of experiments are gathered here as a growing personal knowledge base.</p>
-    <a class="section-link" href="{{ '/archive/' | relative_url }}">Open Archive →</a>
-  </section>
-
-  <section id="projects" class="content-section glass-panel">
-    <h2>Projects</h2>
-    <p>Selected works across writing, code, and coursework, focusing on ideas that can be iterated and revisited.</p>
-    <a class="section-link" href="{{ '/projects/' | relative_url }}">View Projects →</a>
-  </section>
-
-  <section id="about" class="content-section glass-panel">
-    <h2>About</h2>
-    <p>Aster Letter is a quiet digital desk for archiving sparks of thoughts and shaping them into durable artifacts.</p>
-    <a class="section-link" href="{{ '/about/' | relative_url }}">Read About →</a>
-  </section>
-</main>
+<div class="container page-content section-stack">
+  {% include content_panel.html id="archive" title="Archive" body="Notes, blog drafts, and records of experiments are gathered here as a growing personal knowledge base." href="/archive/" link_text="Open Archive →" %}
+  {% include content_panel.html id="projects" title="Projects" body="Selected works across writing, code, and coursework, focusing on ideas that can be iterated and revisited." href="/projects/" link_text="View Projects →" %}
+  {% include content_panel.html id="about" title="About" body="Aster Letter is a quiet digital desk for archiving sparks of thoughts and shaping them into durable artifacts." href="/about/" link_text="Read About →" %}
+</div>
